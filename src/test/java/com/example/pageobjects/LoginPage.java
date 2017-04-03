@@ -1,6 +1,8 @@
 package com.example.pageobjects;
 
 import com.example.setup.SeleniumDriver;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,9 +25,18 @@ public class LoginPage extends AbstractPage {
 
 	@FindBy(xpath = "/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[1]/td/img")
 	WebElement errorBox;
-
+	
+	@FindBy(linkText = "REGISTER")
+	WebElement register;
+	
+	@FindBy(linkText = "SUPPORT")
+	WebElement support;
+	
+	@FindBy(linkText = "CONTACT")
+	WebElement contact;
 
 	public LoginPage() throws Exception {
+		super(SeleniumDriver.getDriver());
 		PageFactory.initElements(SeleniumDriver.getDriver(), this);
 	}
 
@@ -33,10 +44,19 @@ public class LoginPage extends AbstractPage {
 		loginField.sendKeys(login);
 		passwordField.sendKeys(password);
 		loginButton.click();
+		
 	}
 
 	public boolean isSignOnDisplayed() {
 		return errorBox.isDisplayed();
+	}
+	
+	public void mainMenu() {
+		register.click();
+		support.click();
+		contact.click();
+		clickWhenReady(By.linkText("SUPPORT"), 12);
+		
 	}
 
 

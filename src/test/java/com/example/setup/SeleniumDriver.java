@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SeleniumDriver {
 
-    private static final String PATH = "src/test/resources/chromedriver";
+    private static final String PATH = "src/test/resources/chromedriver.exe";
     static WebDriver driver;
 
     public static WebDriver getDriver() {

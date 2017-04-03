@@ -31,5 +31,9 @@ public class LoginTest {
         loginPage.login("user", "password");
         //then
         Assert.assertTrue(loginPage.isSignOnDisplayed());
+        
+        loginPage.mainMenu();
+        loginPage.mainMenu();
+        
     }
 }
